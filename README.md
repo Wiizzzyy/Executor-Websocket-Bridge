@@ -17,9 +17,4 @@ Place the Executor code in your Auto Execute folder and adjust the address and p
 | Website | 🟡 |
 | App     | 🔴 |
 
-Client: **Finished**
-Server: **Finished**
-Website: **Unfinished**
-App: **Not Started**
-
 ## AI was used in the project to create and/or enhance User Interface. It was also used to make development quicker via debugging and suggestions.
