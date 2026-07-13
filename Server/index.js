@@ -94,7 +94,7 @@ const handlers = {
         );
     },
     executed: (_, ws) => {
-        broadcast({ type: "execute", payload: null });
+        broadcast({ type: "executed", payload: null });
         log("event", `${short(ws.__id)} sent 'executed'`);
     },
     execute: (msg, ws) => {
