@@ -1,0 +1,31 @@
+{
+    "name": "wss-dashboard",
+    "version": "1.0.0",
+    "description": "WebSocket server with a live Ink terminal dashboard (clients, executors, executes, event log)",
+    "type": "module",
+    "main": "index.js",
+    "bin": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "build": "yao-pkg ."
+    },
+    "pkg": {
+        "scripts": [
+            "index.js"
+        ],
+        "targets": [
+            "latest-win-x64"
+        ],
+        "outputPath": "dist"
+    },
+    "dependencies": {
+        "ink": "^7.1.0",
+        "ink-big-text": "^2.0.0",
+        "ink-gradient": "^4.0.1",
+        "react": "^19.2.7",
+        "ws": "^8.21.0"
+    },
+    "devDependencies": {
+        "@yao-pkg/pkg": "^6.21.0"
+    }
+}
