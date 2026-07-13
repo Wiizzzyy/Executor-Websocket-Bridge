@@ -99,7 +99,7 @@ const handlers = {
     },
     execute: (msg, ws) => {
         const payload = msg.payload === undefined ? null : msg.payload;
-        broadcast({ type: "execute", code = payload });
+        broadcast({ type: "execute", code: payload });
         ws.send(JSON.stringify({ type: "forwarded" }));
         state.totalExecutes += 1;
         log(
