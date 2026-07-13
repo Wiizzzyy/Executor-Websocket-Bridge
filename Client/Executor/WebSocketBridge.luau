@@ -71,7 +71,9 @@ local function Connect()
             role = "executor",
             executor = exec,
             version = ver,
-            account = `{player.DisplayName} (@{player.Name})`
+            account = `{player.DisplayName} (@{player.Name})`,
+            place = game.PlaceId,
+            job = game.JobId
         })
     end)
 end
