@@ -99,7 +99,7 @@ const handlers = {
     },
     execute: (msg, ws) => {
         const payload = msg.payload === undefined ? null : msg.payload;
-        broadcast({ type: "execute", payload });
+        broadcast({ type: "execute", code = payload });
         ws.send(JSON.stringify({ type: "forwarded" }));
         state.totalExecutes += 1;
         log(
@@ -130,6 +130,8 @@ wss.on("connection", (ws, req) => {
     ws.executor = "unknown";
     ws.version = "unknown";
     ws.account = "unknown";
+    ws.place = "unknown";
+    ws.job = "unknown";
 
     const ip = req.socket.remoteAddress || "unknown";
 
