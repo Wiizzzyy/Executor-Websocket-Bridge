@@ -48,9 +48,11 @@ function short(id) {
 // ────────────────────────────────────────────────────────────
 const wss = new WebSocketServer({ port: PORT });
 
-const broadcast = (message) => {
+const broadcast = (message, role) => {
     const payload = JSON.stringify(message);
+
     wss.clients.forEach((client) => {
+        if (role && client.role !== role) return;
         client.send(payload);
     });
 };
@@ -83,7 +85,9 @@ const handlers = {
             executor: ws.executor,
             version: ws.version,
             account: ws.account,
-        });
+            place: ws.place,
+            job: ws.job
+        }, "client");
 
         log(
             "register",
@@ -94,12 +98,12 @@ const handlers = {
         );
     },
     executed: (_, ws) => {
-        broadcast({ type: "executed", payload: null });
+        broadcast({ type: "executed", payload: null }, "client");
         log("event", `${short(ws.__id)} sent 'executed'`);
     },
     execute: (msg, ws) => {
         const payload = msg.payload === undefined ? null : msg.payload;
-        broadcast({ type: "execute", code: payload });
+        broadcast({ type: "execute", code: payload }, "executor");
         ws.send(JSON.stringify({ type: "forwarded" }));
         state.totalExecutes += 1;
         log(
