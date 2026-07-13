@@ -65,6 +65,8 @@ const handlers = {
         ws.executor = msg.executor || "unknown";
         ws.version = msg.version || "unknown";
         ws.account = msg.account || "unknown";
+        ws.place = msg.place || "unknown";
+        ws.job = msg.job || "unknown";
 
         const info = state.clients.get(ws.__id);
         if (info) {
